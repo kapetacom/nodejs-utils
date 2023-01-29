@@ -42,11 +42,27 @@ class BlockwareURI {
     }
 
     get id() {
-        return `${this.handle}/${this.name}:${this.version}`;
+        return `${this.handle}/${this.name}:${this.version}`.toLowerCase();
     }
 
     get fullName() {
-        return `${this.handle}/${this.name}`
+        return `${this.handle}/${this.name}`.toLowerCase()
+    }
+
+    /**
+     *
+     * @param {BlockwareURI} otherUri
+     */
+    compare(otherUri) {
+        return this.id.localeCompare(otherUri.id);
+    }
+
+    /**
+     *
+     * @param {BlockwareURI} otherUri
+     */
+    equals(otherUri) {
+        return this.id === otherUri.id;
     }
 
     toString() {
@@ -60,13 +76,13 @@ class BlockwareURI {
      */
     _parse() {
         const uri = this._uri;
-        const rx = /^([^\/\s:]+:\/\/)?([^\/\s:]+)\/([^\s:\/]+)(?::([^\s]+))?$/i;
+        const rx = /^(?:([^\/\s:]+):\/\/)?([^\/\s:]+)\/([^\s:\/]+)(?::(\S+))?$/i;
 
         if (!rx.test(uri)) {
             throw new Error('Invalid blockware uri: ' + uri);
         }
 
-        let [
+        let [,
             protocol,
             handle,
             name,

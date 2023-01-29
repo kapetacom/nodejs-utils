@@ -1,11 +1,7 @@
 {
   "name": "@blockware/nodejs-utils",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Various generally useful things for NodeJS",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC"
+  "license": "MIT"
 }
