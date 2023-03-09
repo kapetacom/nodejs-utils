@@ -1,7 +1,19 @@
 {
   "name": "@blockware/nodejs-utils",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Various generally useful things for NodeJS",
   "main": "index.js",
-  "license": "MIT"
+  "types": "index.d.ts",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.9.5"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "files": [
+    "src",
+    "types",
+    "index.d.ts"
+  ]
 }
