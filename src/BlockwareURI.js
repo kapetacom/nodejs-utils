@@ -1,5 +1,4 @@
 class BlockwareURI {
-
     /**
      *
      * @param {string} uri
@@ -46,7 +45,7 @@ class BlockwareURI {
     }
 
     get fullName() {
-        return `${this.handle}/${this.name}`.toLowerCase()
+        return `${this.handle}/${this.name}`.toLowerCase();
     }
 
     /**
@@ -76,18 +75,14 @@ class BlockwareURI {
      */
     _parse() {
         const uri = this._uri;
-        const rx = /^(?:([^\/\s:]+):\/\/)?([^\/\s:]+)\/([^\s:\/]+)(?::(\S+))?$/i;
+        const rx =
+            /^(?:([^\/\s:]+):\/\/)?([^\/\s:]+)\/([^\s:\/]+)(?::(\S+))?$/i;
 
         if (!rx.test(uri)) {
             throw new Error('Invalid blockware uri: ' + uri);
         }
 
-        let [,
-            protocol,
-            handle,
-            name,
-            version
-        ] = rx.exec(uri);
+        let [, protocol, handle, name, version] = rx.exec(uri);
 
         if (!version) {
             version = '';
@@ -99,14 +94,18 @@ class BlockwareURI {
             name,
             version,
             fullName: `${handle}/${name}`,
-            id: `${handle}/${name}:${version}`
+            id: `${handle}/${name}:${version}`,
         };
     }
-
 }
 
 exports.BlockwareURI = BlockwareURI;
 
+/**
+ *
+ * @param uri {string}
+ * @returns {BlockwareURI}
+ */
 exports.parseBlockwareUri = function parseBlockwareUri(uri) {
     return new BlockwareURI(uri);
 };
