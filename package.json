@@ -1,6 +1,6 @@
 {
     "name": "@kapeta/nodejs-utils",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "Various generally useful things for NodeJS",
     "main": "index.js",
     "types": "index.d.ts",
