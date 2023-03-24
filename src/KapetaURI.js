@@ -1,4 +1,4 @@
-class BlockwareURI {
+class KapetaURI {
     /**
      *
      * @param {string} uri
@@ -50,7 +50,7 @@ class BlockwareURI {
 
     /**
      *
-     * @param {BlockwareURI} otherUri
+     * @param {KapetaURI} otherUri
      */
     compare(otherUri) {
         return this.id.localeCompare(otherUri.id);
@@ -58,7 +58,7 @@ class BlockwareURI {
 
     /**
      *
-     * @param {BlockwareURI} otherUri
+     * @param {KapetaURI} otherUri
      */
     equals(otherUri) {
         return this.id === otherUri.id;
@@ -79,7 +79,7 @@ class BlockwareURI {
             /^(?:([^\/\s:]+):\/\/)?([^\/\s:]+)\/([^\s:\/]+)(?::(\S+))?$/i;
 
         if (!rx.test(uri)) {
-            throw new Error('Invalid blockware uri: ' + uri);
+            throw new Error('Invalid kapeta uri: ' + uri);
         }
 
         let [, protocol, handle, name, version] = rx.exec(uri);
@@ -99,13 +99,13 @@ class BlockwareURI {
     }
 }
 
-exports.BlockwareURI = BlockwareURI;
+exports.KapetaURI = KapetaURI;
 
 /**
  *
  * @param uri {string}
- * @returns {BlockwareURI}
+ * @returns {KapetaURI}
  */
-exports.parseBlockwareUri = function parseBlockwareUri(uri) {
-    return new BlockwareURI(uri);
+exports.parseKapetaUri = function parseKapetaUri(uri) {
+    return new KapetaURI(uri);
 };

@@ -1,1 +1,1 @@
-Object.assign(module.exports, require('./src/BlockwareURI'));
+Object.assign(module.exports, require('./src/KapetaURI'));
