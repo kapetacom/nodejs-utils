@@ -10,7 +10,7 @@ interface KapetaURIData {
 export class KapetaURI {
     private readonly uri: string;
 
-    private data?: KapetaURIData;
+    private data: KapetaURIData;
     /**
      *
      * @param {string} uri
@@ -89,7 +89,20 @@ export class KapetaURI {
             throw new Error('Invalid Kapeta uri: ' + uri);
         }
 
-        let [, protocol, handle, name, version] = rx.exec(uri);
+        const match = rx.exec(uri);
+
+        if (!match) {
+            return {
+                protocol: '',
+                fullName: '',
+                handle: '',
+                name: '',
+                version: '',
+                id: ''
+            };
+        }
+
+        let [, protocol, handle, name, version] = match;
 
         if (!version) {
             version = '';

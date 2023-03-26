@@ -1,14 +1,16 @@
 {
     "name": "@kapeta/nodejs-utils",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "description": "Various generally useful things for NodeJS",
     "main": "index.ts",
+    "types": "types/index.d.ts",
     "license": "MIT",
     "devDependencies": {
         "typescript": "^4.9.5",
         "prettier": "^2.8.4"
     },
     "scripts": {
+        "prepublishOnly": "npm run build",
         "build": "tsc",
         "format": "prettier --write ."
     },

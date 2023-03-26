@@ -2,11 +2,22 @@
     "compilerOptions": {
         "module": "commonjs",
         "target": "es5",
+        "jsx": "react",
         "sourceMap": true,
         "allowJs": true,
         "declaration": true,
         "emitDeclarationOnly": true,
-        "declarationDir": "types"
+        "declarationDir": "types",
+        "strict": false,
+        "moduleResolution": "node",
+        "useDefineForClassFields": true,
+        "strictNullChecks": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "forceConsistentCasingInFileNames": true
     },
-    "include": ["src"]
+    "exclude": ["node_modules", "types"]
 }
