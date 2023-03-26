@@ -1,43 +1,55 @@
-class KapetaURI {
+interface KapetaURIData {
+    protocol: string;
+    handle: string;
+    name: string;
+    version: string;
+    fullName: string;
+    id: string;
+}
+
+export class KapetaURI {
+    private readonly uri: string;
+
+    private data?: KapetaURIData;
     /**
      *
      * @param {string} uri
      */
     constructor(uri) {
-        this._uri = uri;
-        this._data = this._parse();
+        this.uri = uri;
+        this.data = this.parse();
     }
 
     get protocol() {
-        return this._data.protocol;
+        return this.data.protocol;
     }
 
     set protocol(protocol) {
-        this._data.protocol = protocol;
+        this.data.protocol = protocol;
     }
 
     get name() {
-        return this._data.name;
+        return this.data.name;
     }
 
     set name(name) {
-        this._data.name = name;
+        this.data.name = name;
     }
 
     get handle() {
-        return this._data.handle;
+        return this.data.handle;
     }
 
     set handle(handle) {
-        this._data.handle = handle;
+        this.data.handle = handle;
     }
 
     get version() {
-        return this._data.version;
+        return this.data.version;
     }
 
     set version(version) {
-        this._data.version = version;
+        this.data.version = version;
     }
 
     get id() {
@@ -68,18 +80,13 @@ class KapetaURI {
         return this.version ? this.id : this.fullName;
     }
 
-    /**
-     *
-     * @return {{protocol: string, name: string, fullName: string, handle: string, id: string, version: string}}
-     * @private
-     */
-    _parse() {
-        const uri = this._uri;
+    private parse(): KapetaURIData {
+        const uri = this.uri;
         const rx =
             /^(?:([^\/\s:]+):\/\/)?([^\/\s:]+)\/([^\s:\/]+)(?::(\S+))?$/i;
 
         if (!rx.test(uri)) {
-            throw new Error('Invalid kapeta uri: ' + uri);
+            throw new Error('Invalid Kapeta uri: ' + uri);
         }
 
         let [, protocol, handle, name, version] = rx.exec(uri);
@@ -99,13 +106,6 @@ class KapetaURI {
     }
 }
 
-exports.KapetaURI = KapetaURI;
-
-/**
- *
- * @param uri {string}
- * @returns {KapetaURI}
- */
-exports.parseKapetaUri = function parseKapetaUri(uri) {
+export const parseKapetaUri = (uri) => {
     return new KapetaURI(uri);
 };

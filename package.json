@@ -1,9 +1,8 @@
 {
     "name": "@kapeta/nodejs-utils",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "description": "Various generally useful things for NodeJS",
-    "main": "index.js",
-    "types": "index.d.ts",
+    "main": "index.ts",
     "license": "MIT",
     "devDependencies": {
         "typescript": "^4.9.5",
