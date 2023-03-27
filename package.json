@@ -2,7 +2,7 @@
     "name": "@kapeta/nodejs-utils",
     "version": "0.0.8",
     "description": "Various generally useful things for NodeJS",
-    "main": "index.ts",
+    "main": "dist/index.js",
     "types": "types/index.d.ts",
     "license": "MIT",
     "devDependencies": {
@@ -16,6 +16,7 @@
     },
     "files": [
         "src",
+        "dist",
         "types",
         "index.d.ts"
     ],
