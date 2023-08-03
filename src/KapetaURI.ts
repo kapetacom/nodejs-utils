@@ -21,7 +21,7 @@ export class KapetaURI {
     }
 
     get protocol() {
-        return this.data.protocol;
+        return this.data.protocol ?? 'kapeta';
     }
 
     set protocol(protocol) {
@@ -58,6 +58,14 @@ export class KapetaURI {
 
     get fullName() {
         return `${this.handle}/${this.name}`.toLowerCase();
+    }
+
+    toNormalizedString() {
+        if (!this.version) {
+            return `${this.protocol}://${this.fullName}`.toLowerCase();
+        }
+
+        return `${this.protocol}://${this.id}`.toLowerCase();
     }
 
     /**
@@ -98,7 +106,7 @@ export class KapetaURI {
                 handle: '',
                 name: '',
                 version: '',
-                id: ''
+                id: '',
             };
         }
 
@@ -119,6 +127,28 @@ export class KapetaURI {
     }
 }
 
-export const parseKapetaUri = (uri) => {
+export const createKapetaUri = (
+    handle: string,
+    name: string,
+    version?: string
+): KapetaURI => {
+    const uri = `kapeta://${handle}/${name}${version ? ':' + version : ''}`;
+    return parseKapetaUri(uri);
+};
+
+export const parseKapetaUri = (uri): KapetaURI => {
     return new KapetaURI(uri);
 };
+
+/**
+ * Normalize a Kapeta URI to a canonical form
+ *
+ * Useful for comparing URIs or using them as keys in a map.
+ */
+export function normalizeKapetaUri(uri: string): string {
+    if (!uri) {
+        return '';
+    }
+
+    return parseKapetaUri(uri).toNormalizedString();
+}
