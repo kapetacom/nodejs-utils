@@ -5,6 +5,11 @@
     "main": "dist/index.js",
     "types": "types/index.d.ts",
     "license": "MIT",
+    "author": {
+        "email": "engineering@kapeta.com",
+        "name": "Kapeta",
+        "url": "https://kapeta.com"
+    },
     "devDependencies": {
         "typescript": "^4.9.5",
         "prettier": "^2.8.4"
