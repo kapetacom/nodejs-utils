@@ -1,2 +1,2 @@
-export * from './src/KapetaURI';
-export * from './src/Version';
+export * from './src/KapetaURI.js';
+export * from './src/Version.js';
