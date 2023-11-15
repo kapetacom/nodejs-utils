@@ -66,7 +66,7 @@ export class KapetaURI {
     }
 
     toObject() {
-        const out = {
+        const out: any = {
             protocol: this.protocol,
             handle: this.handle,
             name: this.name,
@@ -92,19 +92,19 @@ export class KapetaURI {
         return `${this.protocol}://${this.id}`.toLowerCase();
     }
 
-    /**
-     *
-     * @param {KapetaURI} otherUri
-     */
-    compare(otherUri) {
+    compareTo(otherUri: KapetaURI) {
         return this.id.localeCompare(otherUri.id);
     }
 
     /**
-     *
-     * @param {KapetaURI} otherUri
+     * Use compareTo instead
+     * @deprecated
      */
-    equals(otherUri) {
+    compare(otherUri: KapetaURI) {
+        return this.compareTo(otherUri);
+    }
+
+    equals(otherUri: KapetaURI) {
         return this.id === otherUri.id;
     }
 
@@ -155,7 +155,7 @@ export const createKapetaUri = (handle: string, name: string, version?: string):
     return parseKapetaUri(uri);
 };
 
-export const parseKapetaUri = (uri): KapetaURI => {
+export const parseKapetaUri = (uri: string): KapetaURI => {
     return new KapetaURI(uri);
 };
 

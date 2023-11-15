@@ -1,23 +1,10 @@
 {
+    "extends": "@tsconfig/node18/tsconfig.json",
     "compilerOptions": {
-        "module": "commonjs",
-        "target": "es5",
-        "jsx": "react",
-        "sourceMap": true,
-        "allowJs": true,
-        "outDir": "dist",
+        "outDir": "./dist",
         "declaration": true,
-        "declarationDir": "types",
-        "strict": false,
-        "moduleResolution": "node",
-        "useDefineForClassFields": true,
-        "strictNullChecks": true,
-        "allowSyntheticDefaultImports": true,
-        "esModuleInterop": true,
-        "skipLibCheck": true,
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
-        "forceConsistentCasingInFileNames": true
+        "esModuleInterop": true
     },
-    "exclude": ["node_modules", "types", "dist"]
+    "exclude": ["node_modules", "types", "dist"],
+    "include": ["index.ts", "src/**/*"]
 }

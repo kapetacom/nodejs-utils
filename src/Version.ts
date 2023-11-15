@@ -1,21 +1,21 @@
 export class Version {
     private readonly version: string;
 
-    private _tag: string;
+    private _tag?: string;
 
-    private _major: number;
+    private _major?: number;
 
-    private _minor: number;
+    private _minor?: number;
 
-    private _patch: number;
+    private _patch?: number;
 
-    private _preRelease: string;
+    private _preRelease?: string;
 
-    private _preReleaseIteration: number;
+    private _preReleaseIteration?: number;
 
-    private _build: string;
+    private _build?: string;
 
-    private _buildIteration: number;
+    private _buildIteration?: number;
 
     constructor(version: string) {
         this.version = version;
@@ -142,7 +142,7 @@ export class Version {
     }
 
     public toObject() {
-        const out = {
+        const out: any = {
             major: this.major,
             minor: this.minor,
             patch: this.patch,
@@ -166,15 +166,15 @@ export class Version {
     }
 
     get major() {
-        return this._major;
+        return this._major ?? 0;
     }
 
     get minor() {
-        return this._minor;
+        return this._minor ?? 0;
     }
 
     get patch() {
-        return this._patch;
+        return this._patch ?? 0;
     }
 
     get preRelease() {
