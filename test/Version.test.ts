@@ -1,5 +1,5 @@
 import { describe, test, expect } from '@jest/globals';
-import { createVersion, parseVersion } from '../src/Version.js';
+import { createVersion, parseVersion } from '../src/Version';
 
 describe('Version', () => {
     test('Can parse versions', async () => {

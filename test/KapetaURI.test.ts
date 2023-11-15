@@ -1,5 +1,5 @@
 import { describe, test, expect } from '@jest/globals';
-import { createKapetaUri, normalizeKapetaUri, parseKapetaUri } from '../src/KapetaURI.js';
+import { createKapetaUri, normalizeKapetaUri, parseKapetaUri } from '../src/KapetaURI';
 
 describe('KapetaURI', () => {
     test('Can parse kapeta uri', async () => {
