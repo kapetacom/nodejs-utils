@@ -16,11 +16,8 @@ export class KapetaURI {
     private readonly uri: string;
 
     private data: KapetaURIData;
-    /**
-     *
-     * @param {string} uri
-     */
-    constructor(uri) {
+
+    constructor(uri: string) {
         this.uri = uri;
         this.data = this.parse();
     }
@@ -58,11 +55,33 @@ export class KapetaURI {
     }
 
     get id() {
+        if (!this.version) {
+            return this.fullName;
+        }
         return `${this.handle}/${this.name}:${this.version}`.toLowerCase();
     }
 
     get fullName() {
         return `${this.handle}/${this.name}`.toLowerCase();
+    }
+
+    toObject() {
+        const out = {
+            protocol: this.protocol,
+            handle: this.handle,
+            name: this.name,
+            version: this.version,
+            fullName: this.fullName,
+            id: this.id,
+        };
+
+        Object.keys(out).forEach((key) => {
+            if (out[key] === undefined) {
+                delete out[key];
+            }
+        });
+
+        return out;
     }
 
     toNormalizedString() {
@@ -95,8 +114,7 @@ export class KapetaURI {
 
     private parse(): KapetaURIData {
         const uri = this.uri;
-        const rx =
-            /^(?:([^\/\s:]+):\/\/)?([^\/\s:]+)\/([^\s:\/]+)(?::(\S+))?$/i;
+        const rx = /^(?:([^\/\s:]+):\/\/)?([^\/\s:]+)\/([^\s:\/]+)(?::(\S+))?$/i;
 
         if (!rx.test(uri)) {
             throw new Error('Invalid Kapeta uri: ' + uri);
@@ -132,11 +150,7 @@ export class KapetaURI {
     }
 }
 
-export const createKapetaUri = (
-    handle: string,
-    name: string,
-    version?: string
-): KapetaURI => {
+export const createKapetaUri = (handle: string, name: string, version?: string): KapetaURI => {
     const uri = `kapeta://${handle}/${name}${version ? ':' + version : ''}`;
     return parseKapetaUri(uri);
 };
